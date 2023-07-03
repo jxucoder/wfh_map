@@ -31,7 +31,7 @@ with st.sidebar.form("Create Pin Form"):
         if len(output['all_drawings']) == 1:
             st.success(f"You have created 1 marker at {st.session_state['marker']}")
     else:
-        st.info("Click map pin to add your location on the map")
+        st.info("Click 'marker' from the toolbar on the left of the map to add your location on the map")
     name = st.text_input(label="Name")
     email = st.text_input(label="Email")
     notes = st.text_area(label="Notes")
