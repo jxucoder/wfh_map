@@ -1,1 +1,2 @@
-# WFH Map -- visualize where your team members are
+# 🗺️ WFH Map
+visualize locations of your team members
