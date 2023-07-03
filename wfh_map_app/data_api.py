@@ -1,8 +1,7 @@
 import json
 import os
-
-
 import base64
+
 
 def convert_email_to_filename(email):
     # Encode the email address using Base64
@@ -12,6 +11,7 @@ def convert_email_to_filename(email):
     encoded_email = encoded_email.replace("=", "")
 
     return encoded_email
+
 
 def convert_filename_to_email(filename):
     # Remove the file extension and decode the Base64 encoding
@@ -23,14 +23,8 @@ def convert_filename_to_email(filename):
 
 
 def save_location(name, email, notes, location):
-    print(location)
     data_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data")
-    data_to_save = dict(
-        name=name,
-        email=email,
-        notes=notes,
-        location=location,
-    )
+    data_to_save = dict(name=name, email=email, notes=notes, location=location)
     with open(os.path.join(data_path, convert_email_to_filename(email)), 'w') as f:
         json.dump(data_to_save, f)
 

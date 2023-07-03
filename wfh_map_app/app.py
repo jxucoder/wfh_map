@@ -5,18 +5,9 @@ from streamlit_folium import st_folium
 from data_api import save_location, load_locations
 
 
-st.set_page_config(
-    page_title="WFH Map Demo",
-    page_icon=":world_map:️",
-    layout="wide",
-)
-
+st.set_page_config(page_title="WFH Map Demo", page_icon=":world_map:️", layout="wide")
 st.title("WFH Map")
-
-# create map
-m = folium.Map(location=[39.949610, -75.150282], zoom_start=5)
-
-# load all markers and add to the map
+m = folium.Map(location=[40.092518, -94.98745], zoom_start=4.3)
 data = load_locations()
 
 for d in data:
@@ -24,10 +15,9 @@ for d in data:
         d['location'], popup=d['notes'], tooltip=d['name']
     ).add_to(m)
 
-draw = Draw(export=False, draw_options={
+Draw(export=False, draw_options={
     'polyline': False, 'polygon': False, 'rectangle': False, 'circle': False, 'circlemarker': False, "marker": True
-})
-draw.add_to(m)
+}).add_to(m)
 
 output = st_folium(m, width=1024, height=500)
 if output["all_drawings"]:
